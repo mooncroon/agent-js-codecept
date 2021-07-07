@@ -20,9 +20,6 @@
   },
   "homepage": "https://github.com:reportportal/agent-js-codecept#readme",
   "main": "index.js",
-  "dependencies": {
-    "@bin-reportportal/client-javascript": "git://github.com/mooncroon/client-javascript"
-  },
   "scripts": {
     "test": "mocha test/acceptance_test.js --timeout 6000"
   },
