@@ -21,7 +21,7 @@
   "homepage": "https://github.com:reportportal/agent-js-codecept#readme",
   "main": "index.js",
   "dependencies": {
-    "@reportportal/client-javascript": "^5.0.2"
+    "@reportportal/client-javascript": "https://github.com/mooncroon/client-javascript"
   },
   "scripts": {
     "test": "mocha test/acceptance_test.js --timeout 6000"
