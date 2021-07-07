@@ -1,5 +1,5 @@
 {
-  "name": "@reportportal/agent-js-codecept",
+  "name": "@bin-reportportal/agent-js-codecept",
   "version": "0.2.4",
   "description": "Reportportal plugin for Codecept JS tests",
   "repository": {
@@ -21,7 +21,7 @@
   "homepage": "https://github.com:reportportal/agent-js-codecept#readme",
   "main": "index.js",
   "dependencies": {
-    "@reportportal/client-javascript": "https://github.com/mooncroon/client-javascript"
+    "@bin-reportportal/client-javascript": "https://github.com/mooncroon/client-javascript#master"
   },
   "scripts": {
     "test": "mocha test/acceptance_test.js --timeout 6000"
