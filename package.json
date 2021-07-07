@@ -4,7 +4,7 @@
   "description": "Reportportal plugin for Codecept JS tests",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:reportportal/agent-js-codecept.git"
+    "url": "git+ssh://git@github.com:mooncroon/agent-js-codecept.git"
   },
   "keywords": [
     "codeceptJS",
