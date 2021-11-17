@@ -68,6 +68,10 @@ module.exports = (config) => {
     if (obj) rpClient.sendLog(obj.tempId, data, file); 
   }
 
+  function mergeLaunches() {
+    rpClient.mergeLaunches();
+  }
+
   event.dispatcher.on(event.all.before, async () => {
     launchObj = startLaunch();
     try {
@@ -341,6 +345,7 @@ module.exports = (config) => {
 
   return {
     addLog: logCurrent,
+    mergeLaunches: mergeLaunches,
   };
 };
 
