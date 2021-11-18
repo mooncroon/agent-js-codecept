@@ -352,6 +352,7 @@ module.exports = (config) => {
   return {
     addLog: logCurrent,
     mergeLaunches: mergeLaunches,
+    mergeLaunchesByIDs: mergeLaunchesByIDs
   };
 };
 
