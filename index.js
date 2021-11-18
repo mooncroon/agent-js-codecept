@@ -73,8 +73,9 @@ module.exports = (config) => {
   }
 
 
-  function getLaunchesIDsByDescription(description){
-    return rpClient.getLaunchesIDsByDescription(description)
+  function getLaunchesIDsByDescription(launchDescription){
+    launchDescription = launchDescription || config.launchDescription
+    return rpClient.getLaunchesIDsByDescription(launchDescription)
   }
 
   function mergeLaunches() {
