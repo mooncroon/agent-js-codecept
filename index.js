@@ -68,6 +68,15 @@ module.exports = (config) => {
     if (obj) rpClient.sendLog(obj.tempId, data, file); 
   }
 
+  function readLaunchesFromFile() {
+    rpClient.readLaunchesFromFile(); 
+  }
+
+
+  function getLaunchesIDsByDescription(description){
+    return rpClient.getLaunchesIDsByDescription(description)
+  }
+
   function mergeLaunches() {
     rpClient.mergeLaunches();
   }
@@ -354,8 +363,10 @@ module.exports = (config) => {
 
   return {
     addLog: logCurrent,
-    mergeLaunches: mergeLaunches,
-    mergeLaunchesByIDs: mergeLaunchesByIDs
+    mergeLaunches,
+    mergeLaunchesByIDs,
+    getLaunchesIDsByDescription,
+    readLaunchesFromFile
   };
 };
 
