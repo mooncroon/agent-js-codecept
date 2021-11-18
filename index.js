@@ -74,7 +74,10 @@ module.exports = (config) => {
 
   function mergeLaunchesByIDs(launchIds) {
     const request = rpClient.getMergeLaunchesRequest(launchIds);
+    console.log("merge request: " + request)
     const mergeURL = 'launch/merge';
+    console.log("merge url: " + mergeURL)
+
     return rpClient.restClient.create(mergeURL, request, { headers: rpClient.headers });
   }
 
