@@ -83,6 +83,7 @@ module.exports = (config) => {
   }
 
   function mergeLaunchesByIDs(launchIds) {
+    console.log('launchIds: ' + launchIds)
     if (launchIds.length > 1 ) {
       const request = rpClient.getMergeLaunchesRequest(launchIds);
       console.log("merge request: " + JSON.stringify(request))
