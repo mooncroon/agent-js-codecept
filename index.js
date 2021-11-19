@@ -91,7 +91,7 @@ module.exports = (config) => {
   
       return rpClient.restClient.create(mergeURL, request, { headers: rpClient.headers });
     }else {
-      output.error("Can't merge launches. Launches amount is less than or equal 1");
+      output.log("Can't merge launches. Launches amount is less than or equal 1");
     }
   }
 
