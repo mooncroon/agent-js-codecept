@@ -83,12 +83,16 @@ module.exports = (config) => {
   }
 
   function mergeLaunchesByIDs(launchIds) {
-    const request = rpClient.getMergeLaunchesRequest(launchIds);
-    console.log("merge request: " + JSON.stringify(request))
-    const mergeURL = 'launch/merge';
-    console.log("merge url: " + mergeURL)
-
-    return rpClient.restClient.create(mergeURL, request, { headers: rpClient.headers });
+    if (launchIds.length > 1 ) {
+      const request = rpClient.getMergeLaunchesRequest(launchIds);
+      console.log("merge request: " + JSON.stringify(request))
+      const mergeURL = 'launch/merge';
+      console.log("merge url: " + mergeURL)
+  
+      return rpClient.restClient.create(mergeURL, request, { headers: rpClient.headers });
+    }else {
+      output.err("Can't merge launches. Launches amount is less than or equal 1");
+    }
   }
 
   function finishLaunchesByIDs(launchIds) {
