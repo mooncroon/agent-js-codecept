@@ -83,10 +83,8 @@ module.exports = (config) => {
   }
 
   function mergeLaunchesByIDs(launchIds) {
-    console.log('launchIds: ' + launchIds)
     if (launchIds.length > 1 ) {
       const request = rpClient.getMergeLaunchesRequest(launchIds);
-      console.log("merge request: " + JSON.stringify(request))
       const mergeURL = 'launch/merge';
       console.log("merge url: " + mergeURL)
   
@@ -98,6 +96,10 @@ module.exports = (config) => {
 
   function finishLaunchesByIDs(launchIds) {
     return rpClient.finishLaunchesByIDs(launchIds)
+  }
+
+  function finishLaunchesByCurrentDescription() {
+    return rpClient.finishLaunchesByIDs(rpClient.getLaunchesIDsByDescription())
   }
 
   event.dispatcher.on(event.all.before, async () => {
@@ -377,7 +379,8 @@ module.exports = (config) => {
     mergeLaunchesByIDs,
     getLaunchesIDsByDescription,
     readLaunchesFromFile,
-    finishLaunchesByIDs
+    finishLaunchesByIDs,
+    finishLaunchesByCurrentDescription
   };
 };
 
