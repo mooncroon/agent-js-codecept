@@ -91,6 +91,10 @@ module.exports = (config) => {
     return rpClient.restClient.create(mergeURL, request, { headers: rpClient.headers });
   }
 
+  function finishLaunchesByIDS(launchIds) {
+    return rpClient.finishLaunchesByIDS(launchIds)
+  }
+
   event.dispatcher.on(event.all.before, async () => {
     launchObj = startLaunch();
     try {
@@ -367,7 +371,8 @@ module.exports = (config) => {
     mergeLaunches,
     mergeLaunchesByIDs,
     getLaunchesIDsByDescription,
-    readLaunchesFromFile
+    readLaunchesFromFile,
+    finishLaunchesByIDS
   };
 };
 
