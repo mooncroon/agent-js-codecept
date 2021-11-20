@@ -382,7 +382,6 @@ module.exports = (config) => {
     getLaunchesIDsByDescription,
     readLaunchesFromFile,
     finishLaunchesByIDs,
-    finishLaunchesByCurrentDescription
   };
 };
 
