@@ -100,14 +100,12 @@ module.exports = (config) => {
       try{
       let request =  rpClient.getDeleteLaunchesRequest([id]);
           console.log("getDeleteLaunchesRequest request" + JSON.stringify(request))
-           await rpClient.restClient.update(mergeURL, request, { headers: rpClient.headers })
+          let update =  await rpClient.restClient.update(mergeURL, request, { headers: rpClient.headers })
+          console.log("UPDATE:" + update)
       } catch (e) {
-        console.log(e.message)
+        output.debug(`🦝Launch with id ${id} was not merged.\n${e.message}`)
       }
     }
-    // for (let i = 0; i < launchIds.length; i++) {
-          
-    // }
 }
 
   event.dispatcher.on(event.all.before, async () => {
