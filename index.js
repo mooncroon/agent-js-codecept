@@ -94,26 +94,15 @@ module.exports = (config) => {
     }
   }
 
-  function finishLaunchesByIDs(launchIds) {
-    const request = rpClient.getDeleteLaunchesRequest(launchIds);
+  async function finishLaunchesByIDs(launchIds) {
+    const request =  rpClient.getDeleteLaunchesRequest(launchIds);
+    console.log("finishLaunchesByIDs request" + request)
     const mergeURL = 'launch/stop';
-    return rpClient.restClient.update(mergeURL, request, { headers: this.headers })
-    .then((response) => {
-      console.log(`Launches ${launchIds} were successfully stopped!Response:
-        ` + JSON.stringify(response));
-    }, (error)=> {
-        console.log(error)
-    })
-    .catch((error) => {
-      rpClient.logDebug('ERROR');
-      rpClient.logDebug(error);
-    });
+    let resp = await rpClient.restClient.update(mergeURL, request, { headers: this.headers })
+    console.log("finishLaunchesByIDs resp" + resp) 
+    return resp;
+
 }
-
-
-  function finishLaunchesByCurrentDescription() {
-    return rpClient.finishLaunchesByIDs(rpClient.getLaunchesIDsByDescription())
-  }
 
   event.dispatcher.on(event.all.before, async () => {
     launchObj = startLaunch();
