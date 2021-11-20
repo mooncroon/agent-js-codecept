@@ -95,12 +95,17 @@ module.exports = (config) => {
   }
 
   async function finishLaunchesByIDs(launchIds) {
-    const request =  rpClient.getDeleteLaunchesRequest(launchIds);
-    console.log("finishLaunchesByIDs request" + request)
+    // const request =  rpClient.getDeleteLaunchesRequest(launchIds);
+    // console.log("finishLaunchesByIDs request" + request)
+    // const mergeURL = 'launch/stop';
+    // let resp = await rpClient.restClient.update(mergeURL, request, { headers: this.headers })
+    // console.log("finishLaunchesByIDs resp" + resp) 
+    // return resp;
+    const request = await  rpClient.getDeleteLaunchesRequest(launchIds);
+     console.log("getDeleteLaunchesRequest request" + request)
     const mergeURL = 'launch/stop';
-    let resp = await rpClient.restClient.update(mergeURL, request, { headers: this.headers })
-    console.log("finishLaunchesByIDs resp" + resp) 
-    return resp;
+    console.log("HEADERS:" +  this.headers)
+           return  await this.restClient.update(mergeURL, request, { headers: this.headers })
 
 }
 
