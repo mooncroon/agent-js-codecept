@@ -102,7 +102,7 @@ module.exports = (config) => {
           console.log("getDeleteLaunchesRequest request" + JSON.stringify(request))
            await rpClient.restClient.update(mergeURL, request, { headers: rpClient.headers })
       } catch (e) {
-        console.log(e)
+        console.log(e.message)
       }
     }
     // for (let i = 0; i < launchIds.length; i++) {
