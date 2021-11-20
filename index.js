@@ -102,10 +102,10 @@ module.exports = (config) => {
     // console.log("finishLaunchesByIDs resp" + resp) 
     // return resp;
     const request = await  rpClient.getDeleteLaunchesRequest(launchIds);
-     console.log("getDeleteLaunchesRequest request" + request)
+     console.log("getDeleteLaunchesRequest request" + JSON.stringify(request))
     const mergeURL = 'launch/stop';
     console.log("HEADERS:" +  this.headers)
-           return  await this.restClient.update(mergeURL, request, { headers: this.headers })
+           return  await rpClient.restClient.update(mergeURL, request, { headers: this.headers })
 
 }
 
