@@ -94,9 +94,27 @@ module.exports = (config) => {
     }
   }
 
+  // function finishLaunchesByIDs(launchIds) {
+  //   return rpClient.finishLaunchesByIDs(launchIds)
+  
+  // }
+
   function finishLaunchesByIDs(launchIds) {
-    return rpClient.finishLaunchesByIDs(launchIds)
-  }
+    const request = rpClient.getDeleteLaunchesRequest(launchIds);
+    const mergeURL = 'launch/stop';
+    return rpClient.restClient.update(mergeURL, request, { headers: this.headers })
+    .then((response) => {
+      rpClient.logDebug(`Launches ${launchIds} were successfully stopped!Response:
+        ` + JSON.stringify(response));
+    }, (error)=> {
+        console.log(error)
+    })
+    .catch((error) => {
+      rpClient.logDebug('ERROR');
+      rpClient.logDebug(error);
+    });
+}
+
 
   function finishLaunchesByCurrentDescription() {
     return rpClient.finishLaunchesByIDs(rpClient.getLaunchesIDsByDescription())
