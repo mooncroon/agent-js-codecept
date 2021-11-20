@@ -96,14 +96,14 @@ module.exports = (config) => {
 
   async function finishLaunchesByIDs(launchIds) {
     const mergeURL = 'launch/stop';
-    for (let i = 0; i < launchIds.length; i++) {
-          let request = await  rpClient.getDeleteLaunchesRequest(launchIds[i]);
-console.log(`launchId[${i}]: ${launchIds[i]}`)
-
+    for (const id of launchIds) {
+      let request =  rpClient.getDeleteLaunchesRequest([id]);
           console.log("getDeleteLaunchesRequest request" + JSON.stringify(request))
-
            await rpClient.restClient.update(mergeURL, request, { headers: rpClient.headers })
     }
+    // for (let i = 0; i < launchIds.length; i++) {
+          
+    // }
 }
 
   event.dispatcher.on(event.all.before, async () => {
