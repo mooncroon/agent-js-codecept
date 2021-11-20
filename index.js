@@ -105,7 +105,7 @@ module.exports = (config) => {
      console.log("getDeleteLaunchesRequest request" + JSON.stringify(request))
     const mergeURL = 'launch/stop';
     console.log("HEADERS:" +  this.headers)
-           return  await rpClient.restClient.update(mergeURL, request, { headers: this.headers })
+           return  await rpClient.restClient.update(mergeURL, request, { headers:  headers: rpClient.headers })
 
 }
 
