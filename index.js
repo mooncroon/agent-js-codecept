@@ -90,7 +90,7 @@ module.exports = (config) => {
         launches: launchIds,
         mergeType: mergeType || "DEEP",
         mode: mode || "DEFAULT",
-        name: process.env.launchName || 'Test launch name',
+        name: config.launchName || 'Test launch name',
         attributes: config.attributes,
     };
 }
