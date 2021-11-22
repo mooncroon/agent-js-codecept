@@ -85,7 +85,7 @@ module.exports = (config) => {
   function getMergeLaunchesRequest(launchIds, mergeType, mode) {
     return {
         description: `${config.launchDescription}\nMerged launch`,
-        endTime: this.helpers.now(),
+        endTime: rpClient.helpers.now(),
         extendSuitesDescription: false,
         launches: launchIds,
         mergeType: mergeType || "DEEP",
