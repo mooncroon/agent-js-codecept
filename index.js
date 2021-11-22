@@ -82,9 +82,22 @@ module.exports = (config) => {
     rpClient.mergeLaunches();
   }
 
-  function mergeLaunchesByIDs(launchIds) {
+  function getMergeLaunchesRequest(launchIds, mergeType, mode) {
+    return {
+        description: `${config.launchDescription}\nMerged launch`,
+        endTime: this.helpers.now(),
+        extendSuitesDescription: false,
+        launches: launchIds,
+        mergeType: mergeType || "DEEP",
+        mode: mode || "DEFAULT",
+        name: process.env.launchName || 'Test launch name',
+        attributes: config.attributes,
+    };
+}
+
+  async function mergeLaunchesByIDs(launchIds) {
     if (launchIds.length > 1 ) {
-      const request = rpClient.getMergeLaunchesRequest(launchIds);
+      const request = getMergeLaunchesRequest(launchIds);
       const mergeURL = 'launch/merge';
       console.log("merge url: " + mergeURL)
   
