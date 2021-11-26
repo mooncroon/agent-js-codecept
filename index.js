@@ -104,11 +104,15 @@ module.exports = (config) => {
 
   async function mergeLaunchesByIDs(launchIds) {
     if (launchIds.length > 1 ) {
+      let response;
       const request = getMergeLaunchesRequest(launchIds);
       const mergeURL = 'launch/merge';
-      console.log("merge url: " + mergeURL)
-  
-      return rpClient.restClient.create(mergeURL, request, { headers: rpClient.headers });
+     try{
+     response = rpClient.restClient.create(mergeURL, request, { headers: rpClient.headers });
+     } catch(e) {
+      output.log(e)
+     }
+     return response
     }else {
       output.log("Can't merge launches. Launches amount is less than or equal 1");
     }
